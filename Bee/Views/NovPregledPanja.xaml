@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bee.Views.PagePregledPanja"
+             x:Name="contentPage_forPanj">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="A" Clicked="AA"/>
+    </ContentPage.ToolbarItems>
+    
+    
+    <ContentPage.Content>
+
+
+
+            <StackLayout Margin="5">
+
+                <Grid>
+                    <Button Text="shrani" Clicked="Button_Clicked" 
+                        Grid.Column="0"
+                        Margin="5"/>
+
+                    <Button Text="izbriši" Clicked="Button_izbrisi_pregled"
+                        Grid.Column="1" Margin="5"/>
+                </Grid>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Datum: " VerticalOptions="Center" FontSize="Medium"/>
+                    <DatePicker x:Name="DatePicker_one" HorizontalOptions="StartAndExpand" Format="dd/MM/yyy"/>
+
+                    <Label Text="Zalega: " VerticalOptions="Center" FontSize="Medium"/>
+                    <Picker x:Name="Picker_zalega"
+                        Title="Izberi zalego"
+                        HorizontalOptions="StartAndExpand"
+                        ItemDisplayBinding="{Binding}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Moč: " VerticalOptions="Center" FontSize="Medium"/>
+                    <Picker x:Name="Picker_moc"
+                        Title="Izberi moč"
+                        HorizontalOptions="FillAndExpand"
+                        ItemDisplayBinding="{Binding Simbol_moc_opis}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                    <Label Text="Hrana: " VerticalOptions="Center" FontSize="Medium"/>
+                    <Picker x:Name="Picker_hrana"
+                            Title="Izberi hrano"
+                            HorizontalOptions="FillAndExpand"
+                            ItemDisplayBinding="{Binding Simbol_hrana_opis}"/>
+                </StackLayout>
+
+                <Entry x:Name="Entry_zapiski" Placeholder="Zapiski"/>
+
+            </StackLayout>
+
+
+    </ContentPage.Content>
+    
+</ContentPage>

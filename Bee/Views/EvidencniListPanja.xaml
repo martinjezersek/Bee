@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bee.Views.EvidencniListPanja"
+             x:Name="contentPage_EvidencaPanj">
+
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <Style TargetType="StackLayout">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="DarkGoldenrod" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Uredi panj" Clicked="Izbrisi_izbrani_panj"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <RefreshView x:Name="RefreshView_two" IsRefreshing="False">
+
+
+
+            <CollectionView x:Name="CollectionView_Seznam" EmptyView ="Ni pregledov za trenutno leto" Margin="5" 
+                            SelectionMode="Single" SelectionChanged="CollectionView_Seznam_SelectionChanged">
+
+                <CollectionView.Header>
+                    <StackLayout Padding="5">
+                        <Button Text="Nov Pregled" Clicked="Button_click_nov_pregled" />
+                        <Grid>
+                            <Label Text="Datum" Grid.Column="0"  FontSize="Medium" />
+                            <Label Text="Moč" Grid.Column="2" FontSize="Medium" />
+                            <Label Text="Hrana" Grid.Column="3" FontSize="Medium" />
+                            <Label Text="Zalega" Grid.Column="4" FontSize="Medium" />
+                        </Grid>
+                    </StackLayout>
+                </CollectionView.Header>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackLayout Padding="5">
+                            <BoxView Color="Goldenrod" HeightRequest="2"/>
+                            <Grid>
+
+                                <Label Text="{Binding Meritev_datum, StringFormat='{0:dd MMMM yyyy}'}" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium"/>
+                                <Label Text="{Binding Meritev_moc}" Grid.Column="2" FontSize="Medium" FontAttributes="Bold" />
+                                <Label Text="{Binding Meritev_hrana}" Grid.Column="3" FontSize="Medium" FontAttributes="Bold"/>
+                                <Label Text="{Binding Meritev_zalega, StringFormat='Z: {0}'}" Grid.Column="4" FontSize="Medium" FontAttributes="Bold"/>
+                            </Grid>
+                            <Label Text="{Binding Meritev_opis}" />
+                        </StackLayout>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+                
+        </RefreshView>
+
+    </ContentPage.Content>
+    
+</ContentPage>

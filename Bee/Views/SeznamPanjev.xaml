@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bee.Views.SeznamPanjev"
+             Title="Čebelnjak">
+
+    <!--TOOLBAR-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Dodaj Panj" Clicked="Event_dodaj_panj"/>
+    </ContentPage.ToolbarItems>
+    
+    <!--CONTENT-->
+    <ContentPage.Content>
+
+        <RefreshView x:Name="refreshViewOne"
+                     IsRefreshing="False">
+
+            <CollectionView x:Name="collectionViewPanji"
+                            SelectionMode="Single"
+                            SelectionChanged="Selected_item" 
+                            Margin="5">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="2"
+                                     VerticalItemSpacing="5"
+                                     HorizontalItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Black">
+                            <StackLayout>
+                                <Label Text="{Binding StPanj, StringFormat='Panj: {0}'}"
+                                   HeightRequest="75"
+                                   FontSize="Large"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                                <Label Text="{Binding Datum, StringFormat='{0:yyyy}'}"
+                                   Grid.Row="3"
+                                   FontSize="Small"
+                                   HorizontalOptions="Center"/>
+                                <Label Text="{Binding ID, StringFormat='ID: {0}'}"
+                                   Grid.Row="4"
+                                   FontSize="Small"
+                                   HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.Footer>
+                    <Label x:Name="testerFooter"/>
+                </CollectionView.Footer>
+
+            </CollectionView>
+
+        </RefreshView>
+
+    </ContentPage.Content>
+</ContentPage>
